@@ -6,7 +6,6 @@ import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics2D
 import java.awt.Font
-import java.awt.geom.RoundRectangle2D
 
 private val logger = KotlinLogging.logger {}
 

@@ -165,14 +165,14 @@ abstract class Base(width: Double,
 
     override fun imageUpdate(img: Image?, infoflags: Int, x: Int, y: Int, width: Int, height: Int): Boolean {
         var flags = ""
-        if (infoflags and ImageObserver.ERROR != 0) flags += "ERROR "
-        if (infoflags and ImageObserver.ABORT != 0) flags += "ABORT "
-        if (infoflags and ImageObserver.ALLBITS != 0) flags += "ALLBITS "
-        if (infoflags and ImageObserver.FRAMEBITS != 0) flags += "FRAMEBITS "
-        if (infoflags and ImageObserver.HEIGHT != 0) flags += "HEIGHT "
-        if (infoflags and ImageObserver.PROPERTIES != 0) flags += "PROPERTIES "
-        if (infoflags and ImageObserver.SOMEBITS != 0) flags += "SOMEBITS "
-        if (infoflags and ImageObserver.WIDTH != 0) flags += "WIDTH "
+        if (infoflags and ERROR != 0) flags += "ERROR "
+        if (infoflags and ABORT != 0) flags += "ABORT "
+        if (infoflags and ALLBITS != 0) flags += "ALLBITS "
+        if (infoflags and FRAMEBITS != 0) flags += "FRAMEBITS "
+        if (infoflags and HEIGHT != 0) flags += "HEIGHT "
+        if (infoflags and PROPERTIES != 0) flags += "PROPERTIES "
+        if (infoflags and SOMEBITS != 0) flags += "SOMEBITS "
+        if (infoflags and WIDTH != 0) flags += "WIDTH "
         logger.info { "imageUpdate: $flags" }
         return true
     }
@@ -180,12 +180,12 @@ abstract class Base(width: Double,
     suspend fun start() = coroutineScope {
         try {
             logger.info { "start" }
-            Base.nextClk = -1
+            nextClk = -1
             launch {
                 timer(Duration.ofMillis(1000)) {
                     try {
                         repaint()
-                        if(Base.nextClk != -1) {
+                        if(nextClk != -1) {
                             return@launch
                         }
                     } catch (e: Exception) {
