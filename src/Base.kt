@@ -20,6 +20,21 @@ import java.time.Duration
 
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Abstract base class for a customizable graphical window component.
+ *
+ * This class extends `JWindow` and implements `ImageObserver`. It provides
+ * functionality for rendering graphical UI elements with customizable dimensions,
+ * mouse interaction handling, popup menus, component resizing, and various
+ * graphical drawing utilities.
+ *
+ * @constructor Creates an instance of the `Base` class.
+ * @param width The width of the window in pixels.
+ * @param height The height of the window in pixels.
+ * @param x The optional x-coordinate of the window's location; defaults to 0 if not provided.
+ * @param y The optional y-coordinate of the window's location; defaults to 0 if not provided.
+ * @param clipShape An optional shape used to clip the component's boundaries.
+ */
 abstract class Base(width: Double,
                     height: Double,
                     x: Double? = null,
@@ -198,8 +213,8 @@ abstract class Base(width: Double,
         }
     }
 
-    fun drawCircle(g: Graphics2D,
-                   x: Double, y: Double, radius: Double,
+   fun drawCircle(g: Graphics2D,
+                    x: Double, y: Double, radius: Double,
                    bg: Color = Color.WHITE, fg: Color = Color.BLACK,
                    width: Double = 1.0) {
         g.color = bg
